@@ -34,28 +34,26 @@ let menuItems = [
   
 */
 
-function menuList(...menuItems) {
-  const mainMenu = document.createElement("div");
-  const unList = document.createElement("ul");
-  const students = document.createElement("li");
-  const faculty = document.createElement("li");
-  const whatNew = document.createElement("li");
-  const tech = document.createElement("li");
-  const music = document.createElement("li");
-  const logOut = document.createElement("li");
-  
+function createMenu(arr) {
+  menu = document.createElement("div");
+  list = document.createElement("ul");
+  listItem = document.createElement("li");
+  menuButton = document.querySelector(".menu-button");
 
+  menu.classList.add("menu");
 
-  mainMenu.appendChild(unList);
-  unList.appendChild(students);
-  students.textContent = "Students";
+  arr.forEach(item => {
+    document.createElement("li").textContent = item;
+  });
 
-  const menuBar = document.querySelector(".menu-button");
-  menuBar.addEventListener("click", event => {
+  menu.appendChild(list);
+  list.appendChild(listItem);
+
+  menuButton.addEventListener("click", e => {
     menu.classList.toggle("menu--open");
   });
 
   return menu;
 }
-
-menu.appendChild(menuList());
+mainMenu = document.querySelector(".menu-button");
+mainMenu.appendChild(createMenu(menuItems));
