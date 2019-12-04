@@ -35,25 +35,25 @@ let menuItems = [
 */
 
 function createMenu(arr) {
-  menu = document.createElement("div");
-  list = document.createElement("ul");
-  listItem = document.createElement("li");
-  menuButton = document.querySelector(".menu-button");
+  const menu = document.createElement("div");
+  const list = document.createElement("ul");
 
   menu.classList.add("menu");
+  menu.appendChild(list);
 
   arr.forEach(item => {
-    document.createElement("li").textContent = item;
+    const items = document.createElement("li");
+    items.textContent = item;
+    list.append(items);
   });
 
-  menu.appendChild(list);
-  list.appendChild(listItem);
+  const menuButton = document.querySelector(".menu-button");
 
-  menuButton.addEventListener("click", e => {
+  menuButton.addEventListener("click", () => {
     menu.classList.toggle("menu--open");
   });
 
   return menu;
 }
-mainMenu = document.querySelector(".menu-button");
+const mainMenu = document.querySelector(".header");
 mainMenu.appendChild(createMenu(menuItems));
